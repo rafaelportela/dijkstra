@@ -19,7 +19,13 @@ public class LinkTest {
     }
 
     @Test
-    public void shouldHaveACost() {
+    public void canBeInitializedWithItsCost() {
+        Link link = new Link(10);
+        assertEquals( new Integer(10), link.getCost());
+    }
+
+    @Test
+    public void canHaveACost() {
         Link link = new Link();
         link.setCost(10);
         assertEquals( new Integer(10), link.getCost());

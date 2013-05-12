@@ -5,6 +5,13 @@ public class Link {
     private Node to, from;
     private Integer cost;
 
+    public Link() {
+    }
+
+    public Link(Integer cost) {
+        this.cost = cost;
+    }
+
     public Node to() {
         return to;
     }
