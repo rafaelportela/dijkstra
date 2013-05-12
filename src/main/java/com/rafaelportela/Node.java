@@ -6,7 +6,8 @@ import java.util.List;
 public class Node {
 
     private List<Link> links = new ArrayList<Link>();
-    private Integer tentativeDistanceValue = 0;
+    private Integer tentativeDistanceValue;
+    private Boolean visited = false;
 
     public void addLink(Link link) {
         links.add(link);
@@ -22,5 +23,13 @@ public class Node {
 
     public void setTentativeDistanceValue(Integer tentativeDistanceValue) {
         this.tentativeDistanceValue = tentativeDistanceValue;
+    }
+
+    public Boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited() {
+        visited = true;
     }
 }
