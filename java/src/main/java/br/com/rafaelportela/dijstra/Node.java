@@ -11,9 +11,6 @@ public class Node {
     private Boolean visited = false;
     private Node previousNode;
 
-    public Node() {
-    }
-
     public Node(String name) {
         this.name = name;
     }
@@ -32,14 +29,6 @@ public class Node {
 
     public void setTentativeDistanceValue(Integer tentativeDistanceValue) {
         this.tentativeDistanceValue = tentativeDistanceValue;
-    }
-
-    public Boolean isVisited() {
-        return visited;
-    }
-
-    public void setVisited() {
-        visited = true;
     }
 
     @Override

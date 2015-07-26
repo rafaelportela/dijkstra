@@ -5,9 +5,6 @@ public class Link {
     private Node to, from;
     private Integer cost;
 
-    public Link() {
-    }
-
     public Link(Integer cost) {
         this.cost = cost;
     }
@@ -18,10 +15,6 @@ public class Link {
 
     public void to(Node node) {
         to = node;
-    }
-
-    public Node from() {
-        return from;
     }
 
     public void from(Node node) {
