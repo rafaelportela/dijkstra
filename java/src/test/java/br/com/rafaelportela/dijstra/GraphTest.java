@@ -3,6 +3,7 @@ package br.com.rafaelportela.dijstra;
 import org.junit.Before;
 import org.junit.Test;
 
+import static br.com.rafaelportela.dijstra.Link.link;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -18,6 +19,8 @@ public class GraphTest {
         Node node1 = new Node("1");
         Node node2 = new Node("2");
         node3 = new Node("3");
+
+        Link link = link().from(root).to(node1).withDistance(10);
 
         Link linkRootTo1 = new Link(10);
         root.addLink(linkRootTo1);

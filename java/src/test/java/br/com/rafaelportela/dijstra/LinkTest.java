@@ -2,32 +2,21 @@ package br.com.rafaelportela.dijstra;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static br.com.rafaelportela.dijstra.Link.link;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class LinkTest {
 
     @Test
-    public void shouldHaveOutgoingNode() {
-        Link link = new Link();
-        link.to(new Node());
-    }
+    public void linksTwoNodes() throws Exception {
+        Node origin = new Node("origin");
+        Node dest = new Node("dest");
+        assertThat(origin.getLinks().isEmpty(), is(true));
 
-    @Test
-    public void shouldHaveIncomingNode() {
-        Link link = new Link();
-        link.from(new Node());
-    }
+        link().from(origin).to(dest).withDistance(10);
 
-    @Test
-    public void canBeInitializedWithItsCost() {
-        Link link = new Link(10);
-        assertEquals( new Integer(10), link.getCost());
-    }
-
-    @Test
-    public void canHaveACost() {
-        Link link = new Link();
-        link.setCost(10);
-        assertEquals( new Integer(10), link.getCost());
+        assertThat(origin.getLinks().isEmpty(), is(false));
+        assertThat(origin.getLinks().get(0).to(), is(dest));
     }
 }
