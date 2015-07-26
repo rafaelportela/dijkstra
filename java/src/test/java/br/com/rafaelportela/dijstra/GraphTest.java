@@ -1,4 +1,4 @@
-package com.rafaelportela;
+package br.com.rafaelportela.dijstra;
 
 import org.junit.Test;
 
@@ -78,11 +78,7 @@ public class GraphTest {
 
     @Test
     public void nextNodeShouldBeTheOneWithSmallestTentativeDistance() {
+        setupGraph();
         assertEquals(node1, graph.nextNodeFrom(root));
-    }
-
-    @Test
-    public void shouldSetTheVisitedNodeAsVisited() {
-        assertTrue(root.isVisited());
     }
 }
