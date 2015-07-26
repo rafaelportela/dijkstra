@@ -35,4 +35,9 @@ public class Link {
     public Integer getCost() {
         return cost;
     }
+
+    @Override
+    public String toString() {
+        return "[Link from " + from + " to " + to + "]";
+    }
 }

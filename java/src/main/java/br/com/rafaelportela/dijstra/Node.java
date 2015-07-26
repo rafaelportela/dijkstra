@@ -9,6 +9,7 @@ public class Node {
     private List<Link> links = new ArrayList<Link>();
     private Integer tentativeDistanceValue;
     private Boolean visited = false;
+    private Node previousNode;
 
     public Node() {
     }
@@ -39,5 +40,23 @@ public class Node {
 
     public void setVisited() {
         visited = true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Node))
+            return false;
+
+        Node other = (Node) obj;
+        return name.equals(other.name);
+    }
+
+    @Override
+    public String toString() {
+        return "[node " + name + "]";
+    }
+
+    public void setPreviousNode(Node previousNode) {
+        this.previousNode = previousNode;
     }
 }
