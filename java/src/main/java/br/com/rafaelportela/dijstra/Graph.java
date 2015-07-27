@@ -42,10 +42,11 @@ public class Graph {
     private void updateDistancesFromCurrent() {
         for (Link link : currentNode.getLinks()) {
             Node dest = link.to();
-            dest.setTentativeDistanceValue(
-                    currentNode.getTentativeDistanceValue() +
-                            link.getCost());
-            dest.setPreviousNode(currentNode);
+            int newDistance = currentNode.getTentativeDistanceValue() + link.getCost();
+            if (newDistance < dest.getTentativeDistanceValue()) {
+                dest.setTentativeDistanceValue(newDistance);
+                dest.setPreviousNode(currentNode);
+            }
         }
     }
 
@@ -55,6 +56,7 @@ public class Graph {
         for (Node node : unvisitedNodes) {
             if (node.getTentativeDistanceValue() < smallestValue) {
                 selected = node;
+                smallestValue = node.getTentativeDistanceValue();
             }
         }
 

@@ -55,6 +55,8 @@ public class Link {
             Link link = new Link(distance);
             link.from(from);
             link.to(to);
+
+            from.addLink(link);
             return link;
         }
     }
