@@ -1,4 +1,4 @@
-package br.com.rafaelportela.dijstra;
+package br.com.rafaelportela.dijkstra;
 
 public class Link {
 

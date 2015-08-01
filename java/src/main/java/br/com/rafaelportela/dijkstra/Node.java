@@ -1,4 +1,4 @@
-package br.com.rafaelportela.dijstra;
+package br.com.rafaelportela.dijkstra;
 
 import java.util.ArrayList;
 import java.util.List;

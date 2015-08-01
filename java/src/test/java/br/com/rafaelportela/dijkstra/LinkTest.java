@@ -1,8 +1,8 @@
-package br.com.rafaelportela.dijstra;
+package br.com.rafaelportela.dijkstra;
 
 import org.junit.Test;
 
-import static br.com.rafaelportela.dijstra.Link.link;
+import static br.com.rafaelportela.dijkstra.Link.link;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
