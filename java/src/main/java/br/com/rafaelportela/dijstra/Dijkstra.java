@@ -3,7 +3,7 @@ package br.com.rafaelportela.dijstra;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Graph {
+public class Dijkstra {
 
     private Node root;
     private Node currentNode;

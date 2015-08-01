@@ -7,10 +7,10 @@ import static br.com.rafaelportela.dijstra.Link.link;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class GraphTest {
+public class DijkstraTest {
 
     private Node root;
-    private Graph graph;
+    private Dijkstra dijkstra;
     private Node node3;
 
     @Before
@@ -25,17 +25,17 @@ public class GraphTest {
         link().from(node1).to(node3).withDistance(32);
         link().from(node2).to(node3).withDistance(41);
 
-        graph = new Graph();
-        graph.setRoot(root);
-        graph.addNode(node1);
-        graph.addNode(node2);
-        graph.addNode(node3);
+        dijkstra = new Dijkstra();
+        dijkstra.setRoot(root);
+        dijkstra.addNode(node1);
+        dijkstra.addNode(node2);
+        dijkstra.addNode(node3);
     }
 
     @Test
     public void calculatesTheSmallestDistance() throws Exception {
-        graph.setRoot(root);
-        Integer distance = graph.smallestDistanceTo(node3);
+        dijkstra.setRoot(root);
+        Integer distance = dijkstra.smallestDistanceTo(node3);
         assertThat(distance, is(47));
     }
 }
