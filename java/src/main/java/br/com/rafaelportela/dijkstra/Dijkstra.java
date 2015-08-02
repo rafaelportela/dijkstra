@@ -5,8 +5,8 @@ import java.util.*;
 public class Dijkstra {
 
     private Node root;
-    private Node currentNode;
     private Set<Node> unvisitedNodes = new HashSet<Node>();
+    private NextNodeStrategy nextNodeStrategy = new NextNodeStrategy();
 
     public Dijkstra(Graph graph) {
         for (Node node: graph.nodes()) {
@@ -44,51 +44,18 @@ public class Dijkstra {
     }
 
     private Node executePathFinderTo(Node target) {
-        currentNode = root;
+        Node currentNode = root;
         unvisitedNodes.remove(root);
 
         while (!unvisitedNodes.isEmpty()) {
+            currentNode = nextNodeStrategy.next(currentNode, unvisitedNodes);
+            unvisitedNodes.remove(currentNode);
 
-            updateDistancesFromCurrent();
-            Node next = smallestTentativeDistance();
-            unvisitedNodes.remove(next);
-
-            if (next.equals(target)) {
-                return next;
+            if (currentNode.equals(target)) {
+                return currentNode;
             }
-
-            currentNode = next;
         }
 
         throw new RuntimeException("Route not found");
     }
-
-    private void updateDistancesFromCurrent() {
-        for (Link link : currentNode.getLinks()) {
-            Node dest = link.to();
-            int newDistance = currentNode.getTentativeDistanceValue() + link.getCost();
-            if (newDistance < dest.getTentativeDistanceValue()) {
-                dest.setTentativeDistanceValue(newDistance);
-                dest.setPreviousNode(currentNode);
-            }
-        }
-    }
-
-    private Node smallestTentativeDistance() {
-        Node selected = null;
-        Integer smallestValue = Integer.MAX_VALUE;
-        for (Node node : unvisitedNodes) {
-            if (node.getTentativeDistanceValue() < smallestValue) {
-                selected = node;
-                smallestValue = node.getTentativeDistanceValue();
-            }
-        }
-
-        if (selected == null)
-            throw new RuntimeException("Failed to select node with smallest distance.");
-
-        return selected;
-    }
-
-
 }
