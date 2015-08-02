@@ -1,7 +1,6 @@
 package br.com.rafaelportela.dijkstra;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Dijkstra {
 
@@ -20,6 +19,10 @@ public class Dijkstra {
     }
 
     public Integer smallestDistanceTo(Node target) {
+        return findPathTo(target).getTentativeDistanceValue();
+    }
+
+    public Node findPathTo(Node target) {
         currentNode = root;
         unvisitedNodes.remove(root);
 
@@ -30,7 +33,7 @@ public class Dijkstra {
             unvisitedNodes.remove(next);
 
             if (next.equals(target)) {
-                return next.getTentativeDistanceValue();
+                return next;
             }
 
             currentNode = next;
@@ -64,5 +67,22 @@ public class Dijkstra {
             throw new RuntimeException("Failed to select node with smallest distance.");
 
         return selected;
+    }
+
+    public List<Node> shortestPathTo(Node target) {
+        Node lastNode = findPathTo(target);
+
+        List<Node> path = new ArrayList<Node>();
+        Node current = lastNode;
+
+        while (current.getPreviousNode() != null) {
+            path.add(current);
+            current = current.getPreviousNode();
+        }
+
+        path.add(root);
+
+        Collections.reverse(path);
+        return path;
     }
 }

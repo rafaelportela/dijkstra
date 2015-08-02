@@ -48,4 +48,8 @@ public class Node {
     public void setPreviousNode(Node previousNode) {
         this.previousNode = previousNode;
     }
+
+    public Node getPreviousNode() {
+        return previousNode;
+    }
 }
