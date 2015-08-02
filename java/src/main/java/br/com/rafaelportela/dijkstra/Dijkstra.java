@@ -9,14 +9,14 @@ public class Dijkstra {
     private Node currentNode;
     private Set<Node> unvisitedNodes = new HashSet<Node>();
 
-    public void setRoot(Node root) {
-        root.setTentativeDistanceValue(0);
-        this.root = currentNode = root;
-    }
+    public Dijkstra(Graph graph) {
+        for (Node node: graph.nodes()) {
+            node.setTentativeDistanceValue(Integer.MAX_VALUE);
+            unvisitedNodes.add(node);
+        }
 
-    public void addNode(Node node) {
-        node.setTentativeDistanceValue(Integer.MAX_VALUE);
-        unvisitedNodes.add(node);
+        root = graph.getRoot();
+        root.setTentativeDistanceValue(0);
     }
 
     public Integer smallestDistanceTo(Node target) {
