@@ -19,10 +19,31 @@ public class Dijkstra {
     }
 
     public Integer smallestDistanceTo(Node target) {
-        return findPathTo(target).getTentativeDistanceValue();
+        return executePathFinderTo(target).getTentativeDistanceValue();
     }
 
-    public Node findPathTo(Node target) {
+    public List<Node> shortestPathTo(Node target) {
+        Node lastNode = executePathFinderTo(target);
+        List<Node> path = buildPathBackFrom(lastNode);
+
+        Collections.reverse(path);
+        return path;
+    }
+
+    private List<Node> buildPathBackFrom(Node lastNode) {
+        List<Node> path = new ArrayList<Node>();
+        Node current = lastNode;
+
+        while (current.getPreviousNode() != null) {
+            path.add(current);
+            current = current.getPreviousNode();
+        }
+
+        path.add(root);
+        return path;
+    }
+
+    private Node executePathFinderTo(Node target) {
         currentNode = root;
         unvisitedNodes.remove(root);
 
@@ -69,20 +90,5 @@ public class Dijkstra {
         return selected;
     }
 
-    public List<Node> shortestPathTo(Node target) {
-        Node lastNode = findPathTo(target);
 
-        List<Node> path = new ArrayList<Node>();
-        Node current = lastNode;
-
-        while (current.getPreviousNode() != null) {
-            path.add(current);
-            current = current.getPreviousNode();
-        }
-
-        path.add(root);
-
-        Collections.reverse(path);
-        return path;
-    }
 }
