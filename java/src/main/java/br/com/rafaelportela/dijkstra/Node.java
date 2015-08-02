@@ -24,6 +24,10 @@ public class Node {
     }
 
     public Integer getTentativeDistanceValue() {
+        if (tentativeDistanceValue == null) {
+            throw new RuntimeException(this.toString() +
+                    ": Tentative distance is null. Did you forget to set it?");
+        }
         return tentativeDistanceValue;
     }
 
